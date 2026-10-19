@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên Hệ & Gửi Câu Hỏi - Bến Nhà Rồng Dấu Ấn Lịch Sử</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">BẾN NHÀ RỒNG</a>
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="lich-su.html">Lịch sử</a></li>
+          <li><a href="dau-moc.html">Dấu mốc</a></li>
+          <li><a href="kien-truc.html">Kiến trúc</a></li>
+          <li><a href="trung-bay.html">Trưng bày</a></li>
+          <li><a href="thu-vien.html">Thư viện</a></li>
+          <li><a href="tu-lieu.html">Tư liệu</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="lien-he.html" class="active">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <h1>Gửi Câu Hỏi Hoặc Góp Ý Về Nội Dung Website</h1>
+        <p>Điền biểu mẫu bên dưới để đặt câu hỏi tìm hiểu tư liệu lịch sử, góp ý nội dung hoặc tìm hiểu lộ trình tham quan Bến Nhà Rồng.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="grid-2">
+        <!-- Cột 1: Biểu mẫu 5 trường nghiệp vụ -->
+        <div class="form-box">
+          <h2 class="section-title">Biểu mẫu gửi câu hỏi / góp ý</h2>
+          <form id="feedbackForm" novalidate>
+            <!-- Trường 1: Họ và tên (Text) -->
+            <div class="form-group">
+              <label for="fullName">1. Họ và tên người gửi (*):</label>
+              <input type="text" id="fullName" name="fullName" required maxlength="80" placeholder="Ví dụ: Nguyễn Văn An">
+              <div class="error-msg" id="fullNameError"></div>
+            </div>
+
+            <!-- Trường 2: Email liên hệ (Email) -->
+            <div class="form-group">
+              <label for="userEmail">2. Địa chỉ Email nhận phản hồi (*):</label>
+              <input type="email" id="userEmail" name="userEmail" required maxlength="100" placeholder="Ví dụ: sinhvien@truong.edu.vn">
+              <div class="error-msg" id="userEmailError"></div>
+            </div>
+
+            <!-- Trường 3: Chủ đề quan tâm (Select) -->
+            <div class="form-group">
+              <label for="topicSelect">3. Chủ đề câu hỏi hoặc góp ý (*):</label>
+              <select id="topicSelect" name="topicSelect" required>
+                <option value="">-- Chọn một chủ đề --</option>
+                <option value="Câu chuyện lịch sử & Sự kiện 05/06/1911">Câu chuyện lịch sử & Sự kiện 05/06/1911</option>
+                <option value="Kiến trúc & Không gian trưng bày">Kiến trúc & Không gian trưng bày</option>
+                <option value="Tra cứu tư liệu học tập / Tiểu luận">Tra cứu tư liệu học tập / Tiểu luận</option>
+                <option value="Hướng dẫn tham quan theo đoàn">Hướng dẫn tham quan theo đoàn</option>
+                <option value="Góp ý giao diện & Nội dung website">Góp ý giao diện & Nội dung website</option>
+              </select>
+              <div class="error-msg" id="topicSelectError"></div>
+            </div>
+
+            <!-- Trường 4: Nhóm đối tượng người xem (Radio) -->
+            <div class="form-group">
+              <span class="group-label">4. Bạn thuộc nhóm người xem nào? (*)</span>
+              <div class="radio-group">
+                <label for="roleStudent">
+                  <input type="radio" id="roleStudent" name="visitorRole" value="Học sinh / Sinh viên" required>
+                  Học sinh / Sinh viên
+                </label>
+                <label for="roleTeacher">
+                  <input type="radio" id="roleTeacher" name="visitorRole" value="Giáo viên / Nghiên cứu" required>
+                  Giáo viên / Nghiên cứu
+                </label>
+                <label for="roleTourist">
+                  <input type="radio" id="roleTourist" name="visitorRole" value="Du khách tham quan" required>
+                  Du khách tham quan
+                </label>
+              </div>
+              <div class="error-msg" id="visitorRoleError"></div>
+            </div>
+
+            <!-- Trường 5: Nội dung chi tiết (Textarea) -->
+            <div class="form-group">
+              <label for="messageContent">5. Nội dung câu hỏi hoặc góp ý chi tiết (tối thiểu 15 ký tự) (*):</label>
+              <textarea id="messageContent" name="messageContent" rows="5" required minlength="15" maxlength="800" placeholder="Nhập câu hỏi về tư liệu lịch sử hoặc ý kiến đóng góp của bạn..."></textarea>
+              <div class="error-msg" id="messageContentError"></div>
+            </div>
+
+            <button type="submit" class="btn">Kiểm tra & Xem tóm tắt mô phỏng</button>
+          </form>
+
+          <!-- Khung hiển thị kết quả mô phỏng (Không báo đã lưu cơ sở dữ liệu thật) -->
+          <div class="form-result" id="formResultBox" aria-live="polite">
+            <h3>Tóm tắt thông tin biểu mẫu hợp lệ (Mô phỏng tại trình duyệt)</h3>
+            <p style="margin-bottom: 10px;"><em>Lưu ý: Website hoạt động ở chế độ tĩnh phục vụ đồ án học tập nên dữ liệu dưới đây chỉ hiển thị mô phỏng tại trang, chưa gửi lên máy chủ.</em></p>
+            <ul class="feature-list">
+              <li><strong>Họ và tên:</strong> <span id="resName"></span></li>
+              <li><strong>Email:</strong> <span id="resEmail"></span></li>
+              <li><strong>Chủ đề:</strong> <span id="resTopic"></span></li>
+              <li><strong>Nhóm đối tượng:</strong> <span id="resRole"></span></li>
+              <li><strong>Nội dung gửi:</strong> <span id="resMessage"></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cột 2: Thông tin liên hệ di tích & Đầu mối giả định của nhóm -->
+        <div>
+          <h2 class="section-title">Thông tin địa điểm & Đầu mối liên hệ giả định</h2>
+          <div class="card" style="margin-bottom: 24px;">
+            <div class="card-body">
+              <h3>1. Thông tin địa điểm thực tế</h3>
+              <ul class="feature-list">
+                <li><strong>Đơn vị:</strong> Bảo tàng Hồ Chí Minh – Chi nhánh Thành phố Hồ Chí Minh (Di tích Bến Nhà Rồng).</li>
+                <li><strong>Địa chỉ:</strong> Số 01 đường Nguyễn Tất Thành, Quận 4, TP. Hồ Chí Minh.</li>
+                <li><strong>Giờ mở cửa:</strong> Thứ Ba – Chủ Nhật (Sáng: 07g30 – 11g30; Chiều: 13g30 – 17g00).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h3>2. Đầu mối liên hệ giả định của Nhóm thực hiện Website</h3>
+              <p>Thông tin dưới đây là đầu mối giả định phục vụ tiểu luận môn <strong>Thiết kế Web – MMC403</strong>:</p>
+              <ul class="feature-list">
+                <li><strong>Nhóm thực hiện:</strong> Nhóm Sinh viên Đề tài 26 (Yến Nhi – Trung Hiếu – Như Quỳnh).</li>
+                <li><strong>Email mô phỏng:</strong> nhomdetai26.mmc403@student.edu.vn</li>
+                <li><strong>Điện thoại mô phỏng:</strong> (028) 3800 2626 (Giờ hành chính).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Bến Nhà Rồng – Dấu Ấn Lịch Sử</h4>
+          <p>Website truyền thông giáo dục giới thiệu lịch sử, kiến trúc và không gian trưng bày tại Bến Nhà Rồng (Bảo tàng Hồ Chí Minh – Chi nhánh TP.HCM).</p>
+          <p>Đầu mối liên hệ giả định (phục vụ tiểu luận): Nhóm Sinh viên Thực hiện Đề tài 26 – Học phần Thiết kế Web MMC403.</p>
+        </div>
+        <div>
+          <h4>Chuyên đề chính</h4>
+          <ul>
+            <li><a href="lich-su.html">Câu chuyện lịch sử</a></li>
+            <li><a href="kien-truc.html">Kiến trúc di sản</a></li>
+            <li><a href="trung-bay.html">Không gian trưng bày</a></li>
+            <li><a href="tu-lieu.html">Tư liệu & Hướng dẫn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hỗ trợ người xem</h4>
+          <ul>
+            <li><a href="thu-vien.html">Thư viện hình ảnh</a></li>
+            <li><a href="faq.html">Câu hỏi thường gặp (FAQ)</a></li>
+            <li><a href="lien-he.html">Gửi câu hỏi / Góp ý</a></li>
+          </ul>
+        </div>
+      </div>
+      <p>&copy; 2026 Nhóm Đề tài 26 – Thiết kế Web MMC403. Nội dung phục vụ mục đích học tập.</p>
+    </div>
+  </footer>
+
+  <script src="js/form-faq.js"></script>
+</body>
+</html>
