@@ -1,8 +1,4 @@
-// js/lightbox.js
-// Chức năng: Xem ảnh lớn (Lightbox Modal) kèm chú thích và điều hướng ảnh
-// Phụ trách: Trung Hiếu
-
-const galleryData = [
+var dsAnh = [
   {
     src: "images/kien-truc-toan-canh.jpg",
     alt: "Toàn cảnh tòa nhà Bến Nhà Rồng nhìn từ bến cảng Sài Gòn",
@@ -11,9 +7,9 @@ const galleryData = [
   },
   {
     src: "images/dinh-hai-con-rong.jpg",
-    alt: "Cận cảnh đôi rồng gốm tráng men xanh chầu trái châu trên đỉnh mái",
-    title: "2. Chi tiết đôi rồng gốm men xanh chầu nguyệt",
-    description: "Mô-típ 'Lưỡng long chầu nguyệt' bằng gốm tráng men xanh dài khoảng 4,5m trên nóc tòa nhà, tạo nên tên gọi dân gian Bến Nhà Rồng. Nguồn: Tư liệu di sản."
+    alt: "Cận cảnh đôi rồng gốm tráng men xanh trên đỉnh mái Bến Nhà Rồng",
+    title: "2. Chi tiết đôi rồng gốm men xanh trên đỉnh mái",
+    description: "Đôi rồng lớn bằng gốm tráng men xanh dài khoảng 4,5m trên nóc tòa nhà theo phong cách Á Đông, tạo nên tên gọi dân gian Bến Nhà Rồng. Nguồn: Tư liệu di sản."
   },
   {
     src: "images/hanh-lang-vom.jpg",
@@ -46,7 +42,7 @@ const galleryData = [
     description: "Banner chính của website thể hiện tên đề tài, thông điệp truyền thông và bộ màu nhận diện đỏ gạch – vàng đồng. Thực hiện: Yến Nhi."
   },
   {
-    src: "images/poster-tuyen-kham-pha.svg",
+    src: "images/poster-tuyen-kham-pha.jpg",
     alt: "Ấn phẩm Poster giới thiệu tuyến khám phá Kiến trúc và Không gian Di sản Bến Nhà Rồng",
     title: "8. Sản phẩm thiết kế: Poster Tuyến khám phá di sản",
     description: "Poster giới thiệu lộ trình 4 điểm dừng tham quan kiến trúc và phòng trưng bày tại Bến Nhà Rồng. Thực hiện: Trung Hiếu."
@@ -59,103 +55,103 @@ const galleryData = [
   }
 ];
 
-// Biến lưu vị trí ảnh đang mở
-let currentImageIndex = 0;
+var viTriHienTai = 0;
 
-// Chọn các phần tử DOM bằng getElementById và querySelectorAll
-const galleryItems = document.querySelectorAll(".gallery-item");
-const lightboxModal = document.getElementById("lightboxModal");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxTitle = document.getElementById("lightboxTitle");
-const lightboxDesc = document.getElementById("lightboxDesc");
-const lightboxCounter = document.getElementById("lightboxCounter");
-const closeLightboxBtn = document.getElementById("closeLightboxBtn");
-const prevImgBtn = document.getElementById("prevImgBtn");
-const nextImgBtn = document.getElementById("nextImgBtn");
+var cacTheAnh = document.querySelectorAll(".gallery-item");
+var hopDen = document.getElementById("lightboxModal");
+var anhLon = document.getElementById("lightboxImage");
+var tieuDeAnh = document.getElementById("lightboxTitle");
+var moTaAnh = document.getElementById("lightboxDesc");
+var demSoAnh = document.getElementById("lightboxCounter");
+var nutDong = document.getElementById("closeLightboxBtn");
+var nutTruoc = document.getElementById("prevImgBtn");
+var nutSau = document.getElementById("nextImgBtn");
 
-// Hàm cập nhật nội dung ảnh lớn trong Modal
-function updateLightboxContent(index) {
-  if (galleryData.length === 0) {
-    lightboxTitle.textContent = "Không có dữ liệu hình ảnh";
-    lightboxDesc.textContent = "Hiện chưa có hình ảnh nào trong thư viện.";
-    return;
-  }
-
-  // Xử lý vòng lặp chỉ số nếu vượt quá giới hạn mảng
-  if (index < 0) {
-    currentImageIndex = galleryData.length - 1;
-  } else if (index >= galleryData.length) {
-    currentImageIndex = 0;
+function capNhatAnh(viTri) {
+  if (viTri < 0) {
+    viTriHienTai = dsAnh.length - 1;
+  } else if (viTri >= dsAnh.length) {
+    viTriHienTai = 0;
   } else {
-    currentImageIndex = index;
+    viTriHienTai = viTri;
   }
 
-  const item = galleryData[currentImageIndex];
-  lightboxImage.setAttribute("src", item.src);
-  lightboxImage.setAttribute("alt", item.alt);
-  lightboxTitle.textContent = item.title;
-  lightboxDesc.textContent = item.description;
-  lightboxCounter.textContent = "Tư liệu " + (currentImageIndex + 1) + " / " + galleryData.length;
+  var anh = dsAnh[viTriHienTai];
+  anhLon.src = anh.src;
+  anhLon.alt = anh.alt;
+  tieuDeAnh.textContent = anh.title;
+  moTaAnh.textContent = anh.description;
+  demSoAnh.textContent = "Tư liệu " + (viTriHienTai + 1) + " / " + dsAnh.length;
 }
 
-// Hàm mở hộp thoại xem ảnh lớn
-function openLightbox(index) {
-  updateLightboxContent(index);
-  lightboxModal.classList.add("is-open");
-  lightboxModal.setAttribute("aria-hidden", "false");
-  closeLightboxBtn.focus();
-}
-
-// Hàm đóng hộp thoại xem ảnh lớn
-function closeLightbox() {
-  lightboxModal.classList.remove("is-open");
-  lightboxModal.setAttribute("aria-hidden", "true");
-  if (galleryItems[currentImageIndex]) {
-    galleryItems[currentImageIndex].focus();
+function moHopAnh(viTri) {
+  capNhatAnh(viTri);
+  hopDen.classList.add("is-open");
+  hopDen.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  if (nutDong) {
+    nutDong.focus();
   }
 }
 
-// Duyệt danh sách các thẻ ảnh bằng forEach để gắn sự kiện click
-if (galleryItems.length > 0 && lightboxModal) {
-  galleryItems.forEach(function (buttonElement, idx) {
-    buttonElement.addEventListener("click", function () {
-      const dataIdx = Number(buttonElement.getAttribute("data-index"));
-      const targetIndex = !Number.isNaN(dataIdx) ? dataIdx : idx;
-      openLightbox(targetIndex);
+function dongHopAnh() {
+  hopDen.classList.remove("is-open");
+  hopDen.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  if (cacTheAnh[viTriHienTai]) {
+    cacTheAnh[viTriHienTai].focus();
+  }
+}
+
+if (cacTheAnh.length > 0 && hopDen) {
+  for (var i = 0; i < cacTheAnh.length; i++) {
+    cacTheAnh[i].addEventListener("click", function () {
+      var chiSo = parseInt(this.getAttribute("data-index"), 10);
+      if (!isNaN(chiSo)) {
+        moHopAnh(chiSo);
+      }
     });
+  }
+
+  nutDong.addEventListener("click", function () {
+    dongHopAnh();
   });
 
-  // Sự kiện nút Đóng, Ảnh trước, Ảnh tiếp theo
-  closeLightboxBtn.addEventListener("click", closeLightbox);
-
-  prevImgBtn.addEventListener("click", function () {
-    updateLightboxContent(currentImageIndex - 1);
+  nutTruoc.addEventListener("click", function () {
+    capNhatAnh(viTriHienTai - 1);
   });
 
-  nextImgBtn.addEventListener("click", function () {
-    updateLightboxContent(currentImageIndex + 1);
+  nutSau.addEventListener("click", function () {
+    capNhatAnh(viTriHienTai + 1);
   });
 
-  // Đóng khi nhấn vào vùng nền tối bên ngoài hộp thoại
-  lightboxModal.addEventListener("click", function (event) {
-    if (event.target === lightboxModal) {
-      closeLightbox();
+  hopDen.addEventListener("click", function (e) {
+    if (e.target === hopDen) {
+      dongHopAnh();
     }
   });
 
-  // Hỗ trợ điều khiển bằng bàn phím (ESC để đóng, mũi tên Trái/Phải để chuyển ảnh)
-  document.addEventListener("keydown", function (event) {
-    const isOpen = lightboxModal.classList.contains("is-open");
-    if (!isOpen) {
+  document.addEventListener("keydown", function (e) {
+    if (!hopDen.classList.contains("is-open")) {
       return;
     }
-
-    if (event.key === "Escape") {
-      closeLightbox();
-    } else if (event.key === "ArrowLeft") {
-      updateLightboxContent(currentImageIndex - 1);
-    } else if (event.key === "ArrowRight") {
-      updateLightboxContent(currentImageIndex + 1);
+    if (e.key === "Escape") {
+      e.preventDefault();
+      dongHopAnh();
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      capNhatAnh(viTriHienTai - 1);
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      capNhatAnh(viTriHienTai + 1);
+    } else if (e.key === "Tab") {
+      if (e.shiftKey && document.activeElement === nutTruoc) {
+        e.preventDefault();
+        nutDong.focus();
+      } else if (!e.shiftKey && document.activeElement === nutDong) {
+        e.preventDefault();
+        nutTruoc.focus();
+      }
     }
   });
 }

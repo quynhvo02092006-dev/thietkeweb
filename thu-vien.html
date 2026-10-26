@@ -17,7 +17,7 @@
           <li><a href="dau-moc.html">Dấu mốc</a></li>
           <li><a href="kien-truc.html">Kiến trúc</a></li>
           <li><a href="trung-bay.html">Trưng bày</a></li>
-          <li><a href="thu-vien.html" class="active">Thư viện</a></li>
+          <li><a href="thu-vien.html" class="active" aria-current="page">Thư viện</a></li>
           <li><a href="tu-lieu.html">Tư liệu</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="lien-he.html">Liên hệ</a></li>
@@ -37,11 +37,9 @@
     <div class="container">
       <section>
         <h2 class="section-title">Bộ sưu tập 9 hình ảnh tư liệu và sản phẩm thiết kế truyền thông</h2>
-        <p style="margin-bottom: 20px;">Thư viện tổng hợp 6 hình ảnh tư liệu kiến trúc – trưng bày tiêu biểu và 3 ấn phẩm truyền thông do nhóm thiết kế (Banner, Poster, Infographic).</p>
+        <p class="section-intro">Thư viện tổng hợp 6 hình ảnh tư liệu kiến trúc – trưng bày tiêu biểu và 3 ấn phẩm truyền thông do nhóm thiết kế (Banner, Poster, Infographic).</p>
 
-        <!-- Lưới 9 hình ảnh được render/gắn sự kiện với Lightbox JS -->
         <div class="gallery-grid" id="galleryGrid">
-          <!-- Ảnh 1 -->
           <button type="button" class="gallery-item" data-index="0">
             <img src="images/kien-truc-toan-canh.jpg" alt="Toàn cảnh tòa nhà Bến Nhà Rồng nhìn từ bến cảng Sài Gòn">
             <div class="gallery-caption">
@@ -50,16 +48,14 @@
             </div>
           </button>
 
-          <!-- Ảnh 2 -->
           <button type="button" class="gallery-item" data-index="1">
-            <img src="images/dinh-hai-con-rong.jpg" alt="Cận cảnh đôi rồng gốm tráng men xanh chầu trái châu trên đỉnh mái">
+            <img src="images/dinh-hai-con-rong.jpg" alt="Cận cảnh đôi rồng gốm tráng men xanh trên đỉnh mái Bến Nhà Rồng">
             <div class="gallery-caption">
-              <strong>2. Đôi rồng chầu nguyệt trên mái</strong>
+              <strong>2. Đôi rồng gốm men xanh trên mái</strong>
               <span>Chi tiết đôi rồng gốm men xanh tạo nên tên gọi Nhà Rồng (Nguồn: Tư liệu di sản).</span>
             </div>
           </button>
 
-          <!-- Ảnh 3 -->
           <button type="button" class="gallery-item" data-index="2">
             <img src="images/hanh-lang-vom.jpg" alt="Hành lang vòm cuốn và hệ cửa lá sách cổ tại tầng lầu Bến Nhà Rồng">
             <div class="gallery-caption">
@@ -68,7 +64,6 @@
             </div>
           </button>
 
-          <!-- Ảnh 4 -->
           <button type="button" class="gallery-item" data-index="3">
             <img src="images/mo-hinh-tau-latouche.jpg" alt="Mô hình tàu buôn Amiral Latouche-Tréville tại phòng trưng bày số 2">
             <div class="gallery-caption">
@@ -77,7 +72,6 @@
             </div>
           </button>
 
-          <!-- Ảnh 5 -->
           <button type="button" class="gallery-item" data-index="4">
             <img src="images/phong-trung-bay-1.jpg" alt="Không gian phòng trưng bày chuyên đề thời niên thiếu và quê hương">
             <div class="gallery-caption">
@@ -86,7 +80,6 @@
             </div>
           </button>
 
-          <!-- Ảnh 6 -->
           <button type="button" class="gallery-item" data-index="5">
             <img src="images/khong-gian-tuong-niem.jpg" alt="Khuôn viên tượng đài Nguyễn Tất Thành trước tòa nhà Bến Nhà Rồng">
             <div class="gallery-caption">
@@ -95,7 +88,6 @@
             </div>
           </button>
 
-          <!-- Ảnh 7: Banner của nhóm -->
           <button type="button" class="gallery-item" data-index="6">
             <img src="images/banner-ben-nha-rong.jpg" alt="Ấn phẩm Banner chủ đạo Bến Nhà Rồng Dấu Ấn Lịch Sử">
             <div class="gallery-caption">
@@ -104,16 +96,14 @@
             </div>
           </button>
 
-          <!-- Ảnh 8: Poster của Trung Hiếu -->
           <button type="button" class="gallery-item" data-index="7">
-            <img src="images/poster-tuyen-kham-pha.svg" alt="Ấn phẩm Poster giới thiệu tuyến khám phá Kiến trúc và Không gian Di sản Bến Nhà Rồng">
+            <img src="images/poster-tuyen-kham-pha.jpg" alt="Ấn phẩm Poster giới thiệu tuyến khám phá Kiến trúc và Không gian Di sản Bến Nhà Rồng">
             <div class="gallery-caption">
               <strong>8. [Thiết kế] Poster tuyến khám phá</strong>
               <span>Poster giới thiệu lộ trình tham quan 4 điểm nhấn di sản (Thực hiện: Trung Hiếu).</span>
             </div>
           </button>
 
-          <!-- Ảnh 9: Infographic của nhóm -->
           <button type="button" class="gallery-item" data-index="8">
             <img src="images/infographic-dau-moc.jpg" alt="Ấn phẩm Infographic tóm tắt các dấu mốc lịch sử Bến Nhà Rồng">
             <div class="gallery-caption">
@@ -129,19 +119,18 @@
       </p>
     </div>
 
-    <!-- Hộp thoại Xem ảnh lớn (Lightbox Modal) -->
     <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lightboxTitle">
       <div class="lightbox-content">
         <div class="lightbox-img-box">
-          <img id="lightboxImage" src="" alt="">
+          <img id="lightboxImage" src="images/kien-truc-toan-canh.jpg" alt="Toàn cảnh tòa nhà Bến Nhà Rồng nhìn từ bến cảng Sài Gòn">
         </div>
         <div class="lightbox-info">
-          <h3 id="lightboxTitle">Tiêu đề hình ảnh</h3>
-          <p id="lightboxDesc">Chú thích chi tiết hình ảnh tư liệu.</p>
-          <p id="lightboxCounter" style="font-size: 0.85rem; color: #666666; margin-top: 6px;"></p>
+          <h3 id="lightboxTitle">1. Toàn cảnh kiến trúc Bến Nhà Rồng</h3>
+          <p id="lightboxDesc">Công trình khởi công năm 1863 với lối kiến trúc phương Tây kết hợp mái ngói đỏ và đôi rồng Á Đông trên đỉnh mái. Nguồn: Bảo tàng Hồ Chí Minh - Chi nhánh TP.HCM.</p>
+          <p id="lightboxCounter" class="lightbox-counter">Tư liệu 1 / 9</p>
         </div>
         <div class="lightbox-controls">
-          <div>
+          <div class="lightbox-nav-btns">
             <button type="button" class="btn" id="prevImgBtn">← Ảnh trước</button>
             <button type="button" class="btn" id="nextImgBtn">Ảnh tiếp →</button>
           </div>
@@ -162,16 +151,18 @@
         <div>
           <h4>Chuyên đề chính</h4>
           <ul>
+            <li><a href="index.html">Trang chủ</a></li>
             <li><a href="lich-su.html">Câu chuyện lịch sử</a></li>
+            <li><a href="dau-moc.html">Các dấu mốc lịch sử</a></li>
             <li><a href="kien-truc.html">Kiến trúc di sản</a></li>
             <li><a href="trung-bay.html">Không gian trưng bày</a></li>
-            <li><a href="tu-lieu.html">Tư liệu & Hướng dẫn</a></li>
           </ul>
         </div>
         <div>
-          <h4>Hỗ trợ người xem</h4>
+          <h4>Tra cứu & Hỗ trợ</h4>
           <ul>
             <li><a href="thu-vien.html">Thư viện hình ảnh</a></li>
+            <li><a href="tu-lieu.html">Tư liệu & Hướng dẫn</a></li>
             <li><a href="faq.html">Câu hỏi thường gặp (FAQ)</a></li>
             <li><a href="lien-he.html">Gửi câu hỏi / Góp ý</a></li>
           </ul>

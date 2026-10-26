@@ -18,7 +18,7 @@
           <li><a href="kien-truc.html">Kiến trúc</a></li>
           <li><a href="trung-bay.html">Trưng bày</a></li>
           <li><a href="thu-vien.html">Thư viện</a></li>
-          <li><a href="tu-lieu.html" class="active">Tư liệu</a></li>
+          <li><a href="tu-lieu.html" class="active" aria-current="page">Tư liệu</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="lien-he.html">Liên hệ</a></li>
         </ul>
@@ -35,38 +35,34 @@
     </section>
 
     <div class="container">
-      <!-- Chức năng JavaScript đặc thù: Chọn nhóm tư liệu để lọc nội dung -->
       <section>
         <h2 class="section-title">Tra cứu và lọc danh mục tư liệu</h2>
 
         <div class="filter-bar">
           <div class="filter-buttons" role="group" aria-label="Lọc theo nhóm tư liệu">
-            <button type="button" class="btn btn-outline filter-btn active" data-category="all">Tất cả tư liệu</button>
-            <button type="button" class="btn btn-outline filter-btn" data-category="hien-vat">Hiện vật lịch sử</button>
-            <button type="button" class="btn btn-outline filter-btn" data-category="van-ban">Tài liệu & Văn bản</button>
-            <button type="button" class="btn btn-outline filter-btn" data-category="kien-truc">Bản vẽ & Kiến trúc</button>
-            <button type="button" class="btn btn-outline filter-btn" data-category="huong-dan">Hướng dẫn học tập</button>
+            <button type="button" class="btn btn-outline filter-btn active" data-category="all" aria-pressed="true">Tất cả tư liệu</button>
+            <button type="button" class="btn btn-outline filter-btn" data-category="hien-vat" aria-pressed="false">Hiện vật lịch sử</button>
+            <button type="button" class="btn btn-outline filter-btn" data-category="van-ban" aria-pressed="false">Tài liệu & Văn bản</button>
+            <button type="button" class="btn btn-outline filter-btn" data-category="kien-truc" aria-pressed="false">Bản vẽ & Kiến trúc</button>
+            <button type="button" class="btn btn-outline filter-btn" data-category="huong-dan" aria-pressed="false">Hướng dẫn học tập</button>
           </div>
           <div class="filter-search">
-            <label for="searchDocInput" style="font-weight: 600; margin-right: 6px;">Tìm nhanh:</label>
+            <label for="searchDocInput">Tìm nhanh:</label>
             <input type="text" id="searchDocInput" placeholder="Nhập từ khóa (vd: Latouche, rồng...)">
           </div>
         </div>
 
-        <p id="filterStatus" class="filter-status">Đang hiển thị 8 tư liệu.</p>
+        <p id="filterStatus" class="filter-status" aria-live="polite">Đang hiển thị 8 / 8 tư liệu.</p>
 
-        <!-- Nơi hiển thị danh sách thẻ tư liệu được lọc bằng JS -->
         <div class="grid-3" id="documentGrid"></div>
 
-        <!-- Thông báo khi không có kết quả phù hợp -->
-        <div class="empty-state" id="emptyDocState" style="display: none;">
+        <div class="empty-state" id="emptyDocState">
           <h3>Không tìm thấy tư liệu phù hợp</h3>
           <p>Không có tư liệu nào khớp với nhóm hoặc từ khóa bạn vừa chọn. Vui lòng thử từ khóa khác hoặc nhấn nút bên dưới để xem lại toàn bộ danh sách.</p>
-          <button type="button" class="btn" id="resetFilterBtn" style="margin-top: 12px;">Hiển thị lại tất cả tư liệu</button>
+          <button type="button" class="btn" id="resetFilterBtn">Hiển thị lại tất cả tư liệu</button>
         </div>
       </section>
 
-      <!-- Hướng dẫn phương pháp tìm hiểu cho học sinh - sinh viên -->
       <section class="grid-2">
         <div>
           <h2 class="section-title">Hướng dẫn khai thác tư liệu cho học sinh, sinh viên</h2>
@@ -81,8 +77,10 @@
           <div class="card-body">
             <h3>Cần hỗ trợ thuyết minh cho đoàn trường?</h3>
             <p>Nếu bạn đi theo nhóm học tập hoặc Chi đoàn lớp, hãy xem mục Câu hỏi thường gặp (FAQ) hoặc gửi thông tin qua biểu mẫu Liên hệ để được hướng dẫn thủ tục đăng ký thuyết minh.</p>
-            <a href="faq.html" class="btn">Xem 6 câu hỏi FAQ</a>
-            <a href="lien-he.html" class="btn btn-outline" style="margin-left: 8px;">Gửi câu hỏi / Đăng ký</a>
+            <div class="btn-group">
+              <a href="faq.html" class="btn">Xem 6 câu hỏi FAQ</a>
+              <a href="lien-he.html" class="btn btn-outline">Gửi câu hỏi / Đăng ký</a>
+            </div>
           </div>
         </div>
       </section>
@@ -104,16 +102,18 @@
         <div>
           <h4>Chuyên đề chính</h4>
           <ul>
+            <li><a href="index.html">Trang chủ</a></li>
             <li><a href="lich-su.html">Câu chuyện lịch sử</a></li>
+            <li><a href="dau-moc.html">Các dấu mốc lịch sử</a></li>
             <li><a href="kien-truc.html">Kiến trúc di sản</a></li>
             <li><a href="trung-bay.html">Không gian trưng bày</a></li>
-            <li><a href="tu-lieu.html">Tư liệu & Hướng dẫn</a></li>
           </ul>
         </div>
         <div>
-          <h4>Hỗ trợ người xem</h4>
+          <h4>Tra cứu & Hỗ trợ</h4>
           <ul>
             <li><a href="thu-vien.html">Thư viện hình ảnh</a></li>
+            <li><a href="tu-lieu.html">Tư liệu & Hướng dẫn</a></li>
             <li><a href="faq.html">Câu hỏi thường gặp (FAQ)</a></li>
             <li><a href="lien-he.html">Gửi câu hỏi / Góp ý</a></li>
           </ul>

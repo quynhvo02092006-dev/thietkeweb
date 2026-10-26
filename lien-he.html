@@ -20,7 +20,7 @@
           <li><a href="thu-vien.html">Thư viện</a></li>
           <li><a href="tu-lieu.html">Tư liệu</a></li>
           <li><a href="faq.html">FAQ</a></li>
-          <li><a href="lien-he.html" class="active">Liên hệ</a></li>
+          <li><a href="lien-he.html" class="active" aria-current="page">Liên hệ</a></li>
         </ul>
       </nav>
     </div>
@@ -36,25 +36,21 @@
 
     <div class="container">
       <section class="grid-2">
-        <!-- Cột 1: Biểu mẫu 5 trường nghiệp vụ -->
         <div class="form-box">
           <h2 class="section-title">Biểu mẫu gửi câu hỏi / góp ý</h2>
           <form id="feedbackForm" novalidate>
-            <!-- Trường 1: Họ và tên (Text) -->
             <div class="form-group">
               <label for="fullName">1. Họ và tên người gửi (*):</label>
-              <input type="text" id="fullName" name="fullName" required maxlength="80" placeholder="Ví dụ: Nguyễn Văn An">
+              <input type="text" id="fullName" name="fullName" required minlength="2" maxlength="80" placeholder="Ví dụ: Nguyễn Văn An">
               <div class="error-msg" id="fullNameError"></div>
             </div>
 
-            <!-- Trường 2: Email liên hệ (Email) -->
             <div class="form-group">
               <label for="userEmail">2. Địa chỉ Email nhận phản hồi (*):</label>
               <input type="email" id="userEmail" name="userEmail" required maxlength="100" placeholder="Ví dụ: sinhvien@truong.edu.vn">
               <div class="error-msg" id="userEmailError"></div>
             </div>
 
-            <!-- Trường 3: Chủ đề quan tâm (Select) -->
             <div class="form-group">
               <label for="topicSelect">3. Chủ đề câu hỏi hoặc góp ý (*):</label>
               <select id="topicSelect" name="topicSelect" required>
@@ -68,10 +64,9 @@
               <div class="error-msg" id="topicSelectError"></div>
             </div>
 
-            <!-- Trường 4: Nhóm đối tượng người xem (Radio) -->
             <div class="form-group">
-              <span class="group-label">4. Bạn thuộc nhóm người xem nào? (*)</span>
-              <div class="radio-group">
+              <span class="group-label" id="visitorRoleLabel">4. Bạn thuộc nhóm người xem nào? (*)</span>
+              <div class="radio-group" id="visitorRoleGroup" role="radiogroup" aria-labelledby="visitorRoleLabel">
                 <label for="roleStudent">
                   <input type="radio" id="roleStudent" name="visitorRole" value="Học sinh / Sinh viên" required>
                   Học sinh / Sinh viên
@@ -88,7 +83,6 @@
               <div class="error-msg" id="visitorRoleError"></div>
             </div>
 
-            <!-- Trường 5: Nội dung chi tiết (Textarea) -->
             <div class="form-group">
               <label for="messageContent">5. Nội dung câu hỏi hoặc góp ý chi tiết (tối thiểu 15 ký tự) (*):</label>
               <textarea id="messageContent" name="messageContent" rows="5" required minlength="15" maxlength="800" placeholder="Nhập câu hỏi về tư liệu lịch sử hoặc ý kiến đóng góp của bạn..."></textarea>
@@ -98,10 +92,9 @@
             <button type="submit" class="btn">Kiểm tra & Xem tóm tắt mô phỏng</button>
           </form>
 
-          <!-- Khung hiển thị kết quả mô phỏng (Không báo đã lưu cơ sở dữ liệu thật) -->
           <div class="form-result" id="formResultBox" aria-live="polite">
             <h3>Tóm tắt thông tin biểu mẫu hợp lệ (Mô phỏng tại trình duyệt)</h3>
-            <p style="margin-bottom: 10px;"><em>Lưu ý: Website hoạt động ở chế độ tĩnh phục vụ đồ án học tập nên dữ liệu dưới đây chỉ hiển thị mô phỏng tại trang, chưa gửi lên máy chủ.</em></p>
+            <p><em>Lưu ý: Website hoạt động ở chế độ tĩnh phục vụ đồ án học tập nên dữ liệu dưới đây chỉ hiển thị mô phỏng tại trang, chưa gửi lên máy chủ.</em></p>
             <ul class="feature-list">
               <li><strong>Họ và tên:</strong> <span id="resName"></span></li>
               <li><strong>Email:</strong> <span id="resEmail"></span></li>
@@ -112,10 +105,9 @@
           </div>
         </div>
 
-        <!-- Cột 2: Thông tin liên hệ di tích & Đầu mối giả định của nhóm -->
         <div>
           <h2 class="section-title">Thông tin địa điểm & Đầu mối liên hệ giả định</h2>
-          <div class="card" style="margin-bottom: 24px;">
+          <div class="card">
             <div class="card-body">
               <h3>1. Thông tin địa điểm thực tế</h3>
               <ul class="feature-list">
@@ -139,6 +131,10 @@
           </div>
         </div>
       </section>
+
+      <p class="source-note">
+        <strong>Nguồn tư liệu & Cập nhật:</strong> Thông tin tham quan tổng hợp từ Bảo tàng Hồ Chí Minh – Chi nhánh TP.HCM. Cập nhật: Tháng 10/2026.
+      </p>
     </div>
   </main>
 
@@ -153,16 +149,18 @@
         <div>
           <h4>Chuyên đề chính</h4>
           <ul>
+            <li><a href="index.html">Trang chủ</a></li>
             <li><a href="lich-su.html">Câu chuyện lịch sử</a></li>
+            <li><a href="dau-moc.html">Các dấu mốc lịch sử</a></li>
             <li><a href="kien-truc.html">Kiến trúc di sản</a></li>
             <li><a href="trung-bay.html">Không gian trưng bày</a></li>
-            <li><a href="tu-lieu.html">Tư liệu & Hướng dẫn</a></li>
           </ul>
         </div>
         <div>
-          <h4>Hỗ trợ người xem</h4>
+          <h4>Tra cứu & Hỗ trợ</h4>
           <ul>
             <li><a href="thu-vien.html">Thư viện hình ảnh</a></li>
+            <li><a href="tu-lieu.html">Tư liệu & Hướng dẫn</a></li>
             <li><a href="faq.html">Câu hỏi thường gặp (FAQ)</a></li>
             <li><a href="lien-he.html">Gửi câu hỏi / Góp ý</a></li>
           </ul>
